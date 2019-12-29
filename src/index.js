@@ -4,15 +4,15 @@ import './index.css';
 import App from './App';
 import Repos from './components/Repos'
 import * as serviceWorker from './serviceWorker';
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+import {BrowserRouter, Switch, Route} from 'react-router-dom'
 
 ReactDOM.render(
-<Router>
+<BrowserRouter basename="/CB-github">
     <Switch>
-        <Route path="/CB-github/" exact component={App} />
-        <Route path="/CB-github/result" component={Repos} />
+        <Route path="/" exact component={App} />
+        <Route path="/result" component={Repos} />
     </Switch>
-</Router>
+</BrowserRouter>
 , document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
