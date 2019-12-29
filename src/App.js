@@ -2,12 +2,21 @@ import React, { Component } from "react";
 
 class App extends Component {
   state = {};
+
+  handleSubmit = () => {
+    this.props.history.push('/result?username=' + this.state.username);
+  }
+
+  handleChange = (e) => {
+    this.setState({username: e.target.value})
+  }
+  
   render() {
     return (
       <div>
         <div className="row mt-3">
           <div className="col">
-            <a href="/CB-github">
+            <a href="/">
               <img
                 alt="CB logo"
                 src="https://codingblocks.com/assets/images/cb/cblogo.png"
@@ -26,7 +35,7 @@ class App extends Component {
         <div className="row mt-5">
           <div className="col-3"></div>
           <div className="col">
-            <form method="get" action="/CB-github/result">
+            <form onSubmit={this.handleSubmit}>
               <div className="row">
                 <div className="col-10">
                   <div className="form-group">
@@ -37,6 +46,7 @@ class App extends Component {
                       placeholder="Search"
                       name="username"
                       value={this.props.username}
+                      onChange={this.handleChange}
                     />
                   </div>
                 </div>
