@@ -7,7 +7,7 @@ class App extends Component {
       <div>
         <div className="row mt-3">
           <div className="col">
-            <a href="/">
+            <a href="/CB-github">
               <img
                 alt="CB logo"
                 src="https://codingblocks.com/assets/images/cb/cblogo.png"
@@ -26,7 +26,7 @@ class App extends Component {
         <div className="row mt-5">
           <div className="col-3"></div>
           <div className="col">
-            <form method="get" action="/result">
+            <form method="get" action="/CB-github/result">
               <div className="row">
                 <div className="col-10">
                   <div className="form-group">

@@ -9,8 +9,8 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 ReactDOM.render(
 <Router>
     <Switch>
-        <Route path="/" exact component={App} />
-        <Route path="/result" component={Repos} />
+        <Route path="/CB-github/" exact component={App} />
+        <Route path="/CB-github/result" component={Repos} />
     </Switch>
 </Router>
 , document.getElementById('root'));
