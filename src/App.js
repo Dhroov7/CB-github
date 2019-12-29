@@ -1,26 +1,60 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {};
+  render() {
+    return (
+      <div>
+        <div className="row mt-3">
+          <div className="col">
+            <a href="/">
+              <img
+                alt="CB logo"
+                src="https://codingblocks.com/assets/images/cb/cblogo.png"
+              />
+            </a>
+          </div>
+          <div className="col-8"></div>
+          <div className="col">
+            <h6 id="username">
+              {this.props.username ? (
+                <a href={this.props.userUrl}>Hey, {this.props.username}</a>
+              ) : null}
+            </h6>
+          </div>
+        </div>
+        <div className="row mt-5">
+          <div className="col-3"></div>
+          <div className="col">
+            <form method="get" action="/result">
+              <div className="row">
+                <div className="col-10">
+                  <div className="form-group">
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="username"
+                      placeholder="Search"
+                      name="username"
+                      value={this.props.username}
+                    />
+                  </div>
+                </div>
+                <div className="col-2">
+                  <input
+                    type="submit"
+                    className="btn btn-secondary"
+                    value="Submit"
+                  ></input>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div className="col-3"></div>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;

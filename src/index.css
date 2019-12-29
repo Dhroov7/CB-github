@@ -11,3 +11,33 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.text {
+  font-size:10px
+}
+
+a {
+  color: black
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+#githubUserQuery {
+  border-radius: 25px; 
+  background-color: #DCDCDC;
+}
+
+#search {
+  border-radius: 25px; 
+  position: relative;
+  left:40%;
+}
+
+img {
+  height: 100px;
+  width: 200px;
+}
+
