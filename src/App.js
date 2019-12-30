@@ -10,13 +10,13 @@ class App extends Component {
   handleChange = (e) => {
     this.setState({username: e.target.value})
   }
-  
+
   render() {
     return (
       <div>
         <div className="row mt-3">
           <div className="col">
-            <a href="/">
+            <a href="/CB-github">
               <img
                 alt="CB logo"
                 src="https://codingblocks.com/assets/images/cb/cblogo.png"

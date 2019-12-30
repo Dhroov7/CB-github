@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import App from "../App";
 import Repo from "./Repo";
 import axios from "axios";
-import qs from 'query-string';
+import qs from "query-string";
 
 class Repos extends Component {
   constructor() {
-    super();  
+    super();
     this.state = {
       repos: [],
       currentList: [],
@@ -20,8 +20,10 @@ class Repos extends Component {
   }
 
   componentDidMount() {
-    const username = qs.parse(this.props.location.search, { ignoreQueryPrefix: true }).username;
-    this.setState({userQuery: username})
+    const username = qs.parse(this.props.location.search, {
+      ignoreQueryPrefix: true
+    }).username;
+    this.setState({ userQuery: username });
     axios
       .get(`https://api.github.com/users/${username}/repos`)
       .then(response => {
@@ -31,15 +33,18 @@ class Repos extends Component {
         });
         this.setState({ showNextButton: true });
         this.setState({ start: this.state.start + 10 });
-        this.setState({totalPages: response.data.length / 10});
-        this.setState({page: 1});
+        this.setState({ totalPages: response.data.length / 10 });
+        this.setState({ page: 1 });
       });
   }
 
   render() {
     return (
       <div>
-        <App username={this.state.userQuery} userUrl={'https://github.com/' + this.state.userQuery}/>
+        <App
+          username={this.state.userQuery}
+          userUrl={"https://github.com/" + this.state.userQuery}
+        />
         <div className="row mt-5">
           <div className="col-3"></div>
           <div className="col">
@@ -82,40 +87,48 @@ class Repos extends Component {
     );
   }
 
-  prevList = () => {
-    this.setState({
-      currentList: this.state.repos.slice(
-        this.state.start - 20,
-        this.state.start - 10
-      )
-    });
-    this.setState({ start: this.state.start - 10 });
-    this.setState({page: this.state.page - 1});
+  prevList = async () => {
+    try {
+      await this.setState({
+        currentList: this.state.repos.slice(
+          this.state.start - 20,
+          this.state.start - 10
+        )
+      });
+      await this.setState({ start: this.state.start - 10 });
+      await this.setState({ page: this.state.page - 1 });
 
-    if (this.state.page > 1) {
-      this.setState({ showPrevButton: true });
-    } else {
-      this.setState({ showPrevButton: false });
+      if (this.state.page > 1) {
+        this.setState({ showPrevButton: true });
+      } else {
+        this.setState({ showPrevButton: false });
+      }
+      this.setState({ showNextButton: true });
+    } catch (e) {
+      console.log(e);
     }
-    this.setState({ showNextButton: true });
   };
 
-  nextList = () => {
-    this.setState({
-      currentList: this.state.repos.slice(
-        this.state.start,
-        this.state.start + 10
-      )
-    });
-    this.setState({ start: this.state.start + 10 });
-    this.setState({page: this.state.page + 1});
+  nextList = async () => {
+    try {
+      await this.setState({
+        currentList: this.state.repos.slice(
+          this.state.start,
+          this.state.start + 10
+        )
+      });
+      await this.setState({ start: this.state.start + 10 });
+      await this.setState({ page: this.state.page + 1 });
 
-    if (this.state.page < this.state.totalPages) {
-      this.setState({ showNextButton: true });
-    } else {
-      this.setState({ showNextButton: false });
+      if (this.state.page < this.state.totalPages) {
+        this.setState({ showNextButton: true });
+      } else {
+        this.setState({ showNextButton: false });
+      }
+      this.setState({ showPrevButton: true });
+    } catch (e) {
+      console.log(e);
     }
-    this.setState({ showPrevButton: true });
   };
 }
 
